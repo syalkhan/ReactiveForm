@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name:</label>
+      <input formControlName="name">
+    </div>
+  
+    <div formArrayName="contacts">
+      <div *ngFor="let contact of contacts.controls; let i=index" [formGroupName]="i">
+        <label>Phone:</label>
+        <input formControlName="phone">
+        
+        <label>Email:</label>
+        <input formControlName="email">
+  
+        <button type="button" (click)="removeContact(i)">Remove Contact</button>
+      </div>
+    </div>
+  
+    <button type="button" (click)="addContact()">Add Contact</button>
+    <button type="submit">Submit</button>
+  </form>
+  
